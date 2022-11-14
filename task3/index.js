@@ -15,6 +15,14 @@ class Message{
       console.log(this.messageTexts[index]);
     });
   }
+  toHtml(){
+    this.authorNames.forEach((item,index)=>{
+      let p = document.createElement("p");
+      p.innerHTML = `${this.messageDates[index]} ${this.authorNames[index]}: ${this.messageTexts[index]}`;
+      document.querySelector(".container").append(p);
+      p.classList.add("fields");
+    });
+  }
 }
 
 class Messenger extends Message{
@@ -41,4 +49,4 @@ m.send('Məryəm', 'İkinci mesaj');
 let m1 = new Message(authorNamesArr,messageDatesArr,messageTextsArr);
 m1.toString();
 m.show_history();
-
+m1.toHtml();
